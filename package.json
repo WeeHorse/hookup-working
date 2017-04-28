@@ -1,0 +1,19 @@
+{
+  "name": "hookup-working",
+  "version": "0.0.1",
+  "description": "Hookup frontend on Working MySQL for planning and tracking",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/WeeHorse/hookup-working.git"
+  },
+  "author": "Benjamin Berglund",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/WeeHorse/hookup-working/issues"
+  },
+  "homepage": "https://github.com/WeeHorse/hookup-working#readme"
+}
