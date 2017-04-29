@@ -20,7 +20,9 @@ module.exports = class App extends System{
     app.use(this.modules.bodyParser.urlencoded({ extended: false }));
 
     // all traffic to/from db
-    app.all(['/concepts/*', '/entities/*', '/views/*'], new Orm().middleware);
+    app.all(['/concepts/*', '/entities/*', '/views/*'], function(req, res, next){
+      new Orm().middleware(req, res, next);
+    });
 
     // serve frontend files
     app.use(this.modules.express.static(this.clientPath));

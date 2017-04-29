@@ -8,46 +8,30 @@ module.exports = class Orm extends System{
     this.db = this.modules.mysql.createPool(this.config.db);
   }
 
-  // mapRoute(req){
-  //   var parts = req.url.split('/');
-  //   this.route = {
-  //     method: req.method,
-  //     type: null,
-  //     table: null,
-  //     id: null,
-  //     filter: null,
-  //     sort: null
-  //   };
-  //   this.route.type = parts.shift();
-  //   if(this.route.type.indexOf(['concepts', 'entities', 'views']) < 0){
-  //     return false;
-  //   }
-  //   this.route.table = parts.shift();
-  //   if(!this.route.table){ // or not in db
-  //     return false;
-  //   }
-  //   var filter = parts.shift();
-  //   if(filter && Number.isSafeInteger(filter/1)){
-  //     this.route.id = filter;
-  //   }else if(filter){
-  //     this.route.filter = filter;
-  //   }
-  //   var sort = parts.shift();
-  //   if(sort){
-  //     this.route.sort = sort;
-  //   }
-  //   return true;
-  // }
-
   middleware(req, res, next){
     var route = new Route(req);
+    console.log('route', route);
     if(route.valid){
-      console.log(route);
-      res.json(route);
-      res.end();
+      console.log('this', this);
+      this[route.method](route, function(response){
+        res.json(response);
+        res.end();
+      });
     }else{
       next();
     }
+  }
+
+  GET(route, cb){
+    var q = "SELECT * FROM ??";
+    var p = {};
+    (route.id || route.filter) && (q += " WHERE ?");
+    route.id && (p.id = route.id);
+    route.filter && (p = route.filter);
+    this.db.query(q, [route.table, p], function(err, rows, fields){
+      console.log('rows', rows);
+      cb(rows);
+    });
   }
 
 }
