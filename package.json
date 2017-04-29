@@ -2,7 +2,7 @@
   "name": "hookup-working",
   "version": "0.0.1",
   "description": "Hookup frontend on Working MySQL for planning and tracking",
-  "main": "app.js",
+  "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -15,5 +15,12 @@
   "bugs": {
     "url": "https://github.com/WeeHorse/hookup-working/issues"
   },
-  "homepage": "https://github.com/WeeHorse/hookup-working#readme"
+  "homepage": "https://github.com/WeeHorse/hookup-working#readme",
+  "dependencies": {
+    "body-parser": "^1.17.1",
+    "compression": "^1.6.2",
+    "express": "^4.15.2",
+    "express-session": "^1.15.2",
+    "mysql": "^2.13.0"
+  }
 }

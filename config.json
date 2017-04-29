@@ -1,0 +1,17 @@
+{
+  "port": 3000,
+  "requestBodyLimit": "2mb",
+  "clientPath": "client/",
+  "db": {
+    "connectionLimit": 1998,
+    "user": "root",
+    "password": "mysql",
+    "database": "working",
+    "socketPath": "/tmp/mysql.sock",
+    "multipleStatements": true,
+    "timezone": "0000"
+  },
+  "modules":[
+    "path"
+  ]
+}
