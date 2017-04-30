@@ -18,6 +18,10 @@ module.exports = class Route{
     var sort = parts.shift();
     this.sort = sort || null;
 
+    this.request = {};
+    this.request.body = req.body || null;
+    this.request.session = req.session || null;
+
     this.valid = this.method && this.type && this.table;
   }
 
