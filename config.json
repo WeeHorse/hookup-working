@@ -1,4 +1,6 @@
 {
+  "env": "dev",
+  "secret": "smoothiehoodogurufuria",
   "port": 3000,
   "requestBodyLimit": "2mb",
   "clientPath": "client/",

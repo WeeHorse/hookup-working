@@ -8,8 +8,7 @@ module.exports = class Route{
     var type = parts.shift();
     this.type = (type && ['concepts', 'entities', 'views'].indexOf(type) > -1)? type : null;
 
-    var table = parts.shift();
-    this.table = (table && this.inDb(table))? table : null;
+    this.table = parts.shift() || null;
 
     var filter = parts.shift();
     this.id = (filter && Number.isSafeInteger(filter/1))? filter : null;
@@ -23,10 +22,6 @@ module.exports = class Route{
     this.request.session = req.session || null;
 
     this.valid = this.method && this.type && this.table;
-  }
-
-  inDb(table){
-    return true;
   }
 
 }
